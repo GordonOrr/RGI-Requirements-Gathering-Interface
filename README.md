@@ -2,9 +2,9 @@
 BootCamp 
 
 ## Team Members
-# Andrew Smith
-# Carter Sheppard
-# Gordon Orr
+* Andrew Smith
+* Carter Sheppard
+* Gordon Orr
 
 ## Task
 
