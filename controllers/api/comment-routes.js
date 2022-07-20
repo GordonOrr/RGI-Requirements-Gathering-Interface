@@ -16,7 +16,7 @@ router.post('/', withAuth, (req, res) => {
   Comment.create({
     comment_text: req.body.comment_text,
     user_id: req.session.user_id,
-    post_id: req.body.post_id
+    requirement_id: req.body.requirement_id
   })
     .then(dbCommentData => res.json(dbCommentData))
     .catch(err => {
@@ -28,7 +28,7 @@ router.post('/', withAuth, (req, res) => {
 router.delete('/:id', withAuth, (req, res) => {
   Comment.destroy({
     where: {
-      id: req.params.id
+      comment_id: req.params.id
     }
   })
     .then(dbCommentData => {

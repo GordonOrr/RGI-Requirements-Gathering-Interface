@@ -17,7 +17,7 @@ Requirements.belongsTo(User, {
 User.belongsToMany(Requirements, {
   through: ContributorLog,
   //NEED UP UPDATE VARIABLE NAMES
-  as: 'voted_posts',
+  as: 'contributed_requirements',
 
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
@@ -25,7 +25,7 @@ User.belongsToMany(Requirements, {
 
 Requirements.belongsToMany(User, {
   through: ContributorLog,
-  as: 'voted_posts',
+  as: 'contributed_requirements',
   foreignKey: 'post_id',
   onDelete: 'SET NULL'
 });
