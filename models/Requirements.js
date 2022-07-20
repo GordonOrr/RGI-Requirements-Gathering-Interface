@@ -1,27 +1,27 @@
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
-class Post extends Model {
+class Requirements extends Model {
   static upvote(body, models) {
     return models.Vote.create({
       user_id: body.user_id,
-      post_id: body.post_id
+      requirement_id: body.requirement_id
     }).then(() => {
       return Post.findOne({
         where: {
-          id: body.post_id
+          id: body.requirement_id
         },
         attributes: [
           'id',
-          'post_url',
+          'requirement_url',
           'title',
           'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+          [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributors_count']
         ],
         include: [
           {
             model: models.Comment,
-            attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+            attributes: ['comment_id', 'comment_text', 'requirement_id', 'user_id', 'created_at'],
             include: {
               model: models.User,
               attributes: ['username']
@@ -34,9 +34,9 @@ class Post extends Model {
 }
 
 // create fields/columns for Post model
-Post.init(
+Requirements.init(
   {
-    id: {
+    requirement_id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
@@ -46,7 +46,7 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false
     },
-    post_url: {
+    requirement_url: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -57,7 +57,7 @@ Post.init(
       type: DataTypes.INTEGER,
       references: {
         model: 'user',
-        key: 'id'
+        key: 'user_id'
       }
     }
   },
@@ -65,8 +65,8 @@ Post.init(
     sequelize,
     freezeTableName: true,
     underscored: true,
-    modelName: 'post'
+    modelName: 'requirement'
   }
 );
 
-module.exports = Post;
+module.exports = Requirements;

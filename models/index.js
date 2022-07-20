@@ -1,49 +1,50 @@
 // import all models
-const Post = require('./Post');
+const Requirements = require('./Requirements');
 const User = require('./User');
-const Vote = require('./Vote');
+const ContributorLog = require('./ContributorLog');
 const Comment = require('./Comment');
 
 // create associations
-User.hasMany(Post, {
+User.hasMany(Requirements, {
   foreignKey: 'user_id'
 });
 
-Post.belongsTo(User, {
+Requirements.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-User.belongsToMany(Post, {
-  through: Vote,
+User.belongsToMany(Requirements, {
+  through: ContributorLog,
+  //NEED UP UPDATE VARIABLE NAMES
   as: 'voted_posts',
 
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Post.belongsToMany(User, {
-  through: Vote,
+Requirements.belongsToMany(User, {
+  through: ContributorLog,
   as: 'voted_posts',
   foreignKey: 'post_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(User, {
+ContributorLog.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(Post, {
+ContributorLog.belongsTo(Requirements, {
   foreignKey: 'post_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Vote, {
+User.hasMany(ContributorLog, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
+Requirements.hasMany(ContributorLog, {
   foreignKey: 'post_id'
 });
 
@@ -52,7 +53,7 @@ Comment.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
-Comment.belongsTo(Post, {
+Comment.belongsTo(Requirements, {
   foreignKey: 'post_id',
   onDelete: 'SET NULL'
 });
@@ -62,8 +63,8 @@ User.hasMany(Comment, {
   onDelete: 'SET NULL'
 });
 
-Post.hasMany(Comment, {
+Requirements.hasMany(Comment, {
   foreignKey: 'post_id'
 });
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Requirements, ContributorLog, Comment };
