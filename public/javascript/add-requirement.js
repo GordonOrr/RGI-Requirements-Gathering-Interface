@@ -2,9 +2,9 @@ async function newFormHandler(event) {
   event.preventDefault();
 
   const title = document.querySelector('input[name="requirement-title"]').value;
-  const post_url = document.querySelector('input[name="requirement-url"]').value;
+  const requirement_url = document.querySelector('input[name="requirement-url"]').value;
 
-  const response = await fetch(`/api/requirements`, {
+  const response = await fetch(`/api/requirements/`, {
     method: 'POST',
     body: JSON.stringify({
       title,

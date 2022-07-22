@@ -4,7 +4,7 @@ async function contributorLogClickHandler(event) {
   const id = window.location.toString().split('/')[
     window.location.toString().split('/').length - 1
   ];
-  const response = await fetch('/api/requirements/upvote', {
+  const response = await fetch('/api/requirements/contributor', {
     method: 'PUT',
     body: JSON.stringify({
       requirement_id: id

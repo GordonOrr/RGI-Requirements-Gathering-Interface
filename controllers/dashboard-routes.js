@@ -71,7 +71,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
       if (dbReqData) {
         const requirement = dbReqData.get({ plain: true });
         
-        res.render('edit-post', {
+        res.render('edit-requirement', {
           requirement,
           loggedIn: true
         });

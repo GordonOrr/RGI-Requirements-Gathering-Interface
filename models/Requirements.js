@@ -2,9 +2,9 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
 class Requirements extends Model {
-  static upvote(body, models) {
-    return models.Vote.create({
-      user_id: body.user_id,
+  static upvote(body, user_id, models) {
+    return models.ContributorLog.create({
+      user_id: user_id,
       requirement_id: body.requirement_id
     }).then(() => {
       return Post.findOne({
