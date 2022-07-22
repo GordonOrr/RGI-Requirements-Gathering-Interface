@@ -1,31 +1,31 @@
 <section>
-  <h2>Create New Post</h2>
+  <h2>Create New Requirement</h2>
 
-  <form class="new-post-form">
+  <form class="new-requirement-form">
     <div>
-      <label for="post-title">Title</label>
-      <input type="text" id="post-title" name="post-title" />
+      <label for="requirement-title">Title</label>
+      <input type="text" id="requirement-title" name="requirement-title" />
     </div>
     <div>
-      <label for="post-url">Link</label>
-      <input id="post-url" name="post-url" />
+      <label for="requirement-url">Link</label>
+      <input id="requirement-url" name="requirement-url" />
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
 </section>
 
-{{#if posts.length}}
+{{#if requirements.length}}
 <section>
-  <h2>Your Posts</h2>
+  <h2>Your Requirements</h2>
   <ol>
-    {{#each posts as |post|}}
+    {{#each requirements as |requirement|}}
     <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit post</a>
+      {{> requirement-info requirement}}
+      <a href="/dashboard/edit/{{requirement.requirenet_id}}" class="edit-link">Edit Requirement</a>
     </li>
     {{/each}}
   </ol>
 </section>
 {{/if}}
 
-<script src="/javascript/add-post.js"></script>
+<script src="/javascript/add-requirement.js"></script>

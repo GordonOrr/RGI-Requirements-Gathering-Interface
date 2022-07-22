@@ -1,4 +1,4 @@
-{{> post-info post}}
+{{> requirement-info requirement}}
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -7,15 +7,15 @@
   </div>
 
   <div>
-    <button type="submit">add comment</button>
-    <button type="button" class="upvote-btn">upvote</button>
+    <button type="submit">Add Comment</button>
+    <button type="button" class="contributor-btn">Add Self as Contributor</button>
   </div>
 </form>
 {{/if}}
 
-{{> comments post.comments}}
+{{> comments requirement.comments}}
 
 {{#if loggedIn}}
 <script src="/javascript/comment.js"></script>
-<script src="/javascript/upvote.js"></script>
+<script src="/javascript/contribute.js"></script>
 {{/if}}
