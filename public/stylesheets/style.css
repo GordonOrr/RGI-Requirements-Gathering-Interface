@@ -10,17 +10,18 @@ body, html {
   color: #333;
 }
 
-/*html { 
+html { 
   background: url('../images/background-photo.avif') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: 100% 100%;
-}*/
+}
 
 a {
   text-decoration: none;
-  color: #225ca3;
+  color: white;
+  /* color: #225ca3; */
   font-weight: bold;
   transition: color .1s;
 }
@@ -87,11 +88,20 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1%;
+  padding: 2% 1%;
 }
 
 header h1 {
-  font-size: 1em;
+  font-size: 1.5em;
+  color: white;
+}
+
+.top-logo {
+  margin-bottom: 1%;
+}
+
+.bottom-logo {
+  margin-top: 1px;
 }
 
 main {
@@ -105,7 +115,8 @@ main {
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  color: #225ca3;
+  color: white;
+  /* color: #225ca3; */
   font-size: 100%;
   font-weight: bold;
   transition: color .1s;
@@ -183,4 +194,5 @@ footer {
   justify-content: center;
   padding: 1%;
   font-size: 110%;
+  color: white;
 }
