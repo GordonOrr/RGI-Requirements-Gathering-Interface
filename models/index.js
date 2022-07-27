@@ -26,7 +26,7 @@ User.belongsToMany(Requirements, {
 Requirements.belongsToMany(User, {
   through: ContributorLog,
   as: 'contributed_requirements',
-  foreignKey: 'post_id',
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
@@ -36,7 +36,7 @@ ContributorLog.belongsTo(User, {
 });
 
 ContributorLog.belongsTo(Requirements, {
-  foreignKey: 'post_id',
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
@@ -45,7 +45,7 @@ User.hasMany(ContributorLog, {
 });
 
 Requirements.hasMany(ContributorLog, {
-  foreignKey: 'post_id'
+  foreignKey: 'requirement_id'
 });
 
 Comment.belongsTo(User, {
@@ -54,7 +54,7 @@ Comment.belongsTo(User, {
 });
 
 Comment.belongsTo(Requirements, {
-  foreignKey: 'post_id',
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
@@ -64,7 +64,7 @@ User.hasMany(Comment, {
 });
 
 Requirements.hasMany(Comment, {
-  foreignKey: 'post_id'
+  foreignKey: 'requirement_id'
 });
 
 module.exports = { User, Requirements, ContributorLog, Comment };

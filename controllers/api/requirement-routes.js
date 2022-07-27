@@ -92,7 +92,7 @@ router.post('/', withAuth, (req, res) => {
 
 router.put('/contributor/', withAuth, (req, res) => {
   // custom static method created in models/Post.js
-  Requirements.upvote({ ...req.body, user_id: req.session.user_id }, { ContributorLog, Comment, User })
+  Requirements.upvote({ ...req.body, user_id: req.session.user_id }, { ContributorLog, Comment, User, Requirements })
     .then(updatedContributorData => res.json(updatedContributorData))
     .catch(err => {
       console.log(err);
