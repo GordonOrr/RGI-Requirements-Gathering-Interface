@@ -63,8 +63,12 @@ textarea:focus, input:focus {
 }
 
 textarea {
-  min-width: 40%;
-  min-height: 100px;
+  min-width: 100%;
+  min-height: 45px;
+}
+
+.new-comment {
+  margin-bottom: 6%;
 }
 
 form > div {
@@ -82,6 +86,24 @@ form label {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+}
+
+.comment-wrapper {
+  width: 100%;
+  min-height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-wrapper button {
+  padding: 7px;
+}
+
+.point-line {
+  margin-bottom: 5%;
 }
 
 .req-wrapper {
@@ -179,6 +201,10 @@ main {
   color: white;
 }
 
+.title {
+  font-weight: bold;
+}
+
 .meta {
   color: white;
 }
@@ -197,8 +223,26 @@ main {
   background-color: #1f9c13;
 }
 
+.edit-req-title {
+  width: 100%;
+}
+
 .comment-form {
   margin-bottom: 5%;
+  margin-top: 1.5%;
+}
+
+.alt-comment-form {
+  margin-bottom: 2%;
+  margin-top: 1.5%;
+}
+
+.comment-list {
+  margin-top: 1.5%;
+}
+
+.comment-title {
+  text-align: center;
 }
 
 .comment {
@@ -206,14 +250,22 @@ main {
   margin-bottom: 1%;
 }
 
+.comments {
+  margin-top: 5%;
+}
+
 .comment:nth-child(odd) {
-  background-color: #fff5eb;
+  background-color: darkgrey;
 }
 
 .comment .meta {
   font-size: 90%;
   margin-bottom: .5%;
-  opacity: .6;
+  opacity: .8;
+}
+
+.add-comment-button {
+  width: 100%;
 }
 
 .new-post-form input {
@@ -234,5 +286,9 @@ footer {
 }
 
 section {
+  color: white;
+}
+
+article {
   color: white;
 }
