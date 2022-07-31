@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
       'requirement_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributor_count']
+      [sequelize.literal('(SELECT COUNT(contribution_id) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.requirement_id)'), 'contributor_count']
     ],
     include: [
       {
@@ -46,7 +46,7 @@ router.get('/:id', (req, res) => {
       'requirement_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributor_count']
+      [sequelize.literal('(SELECT COUNT(contribution_id) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.requirement_id)'), 'contributor_count']
     ],
     include: [
       {
@@ -90,9 +90,9 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/contributor/', withAuth, (req, res) => {
+router.put('/contributor', withAuth, (req, res) => {
   // custom static method created in models/Post.js
-  Requirements.upvote({ ...req.body, user_id: req.session.user_id }, { ContributorLog, Comment, User, Requirements })
+  Requirements.upvote({ ...req.body, user_id: req.session.user_id }, { ContributorLog, Comment, User})
     .then(updatedContributorData => res.json(updatedContributorData))
     .catch(err => {
       console.log(err);

@@ -2,21 +2,21 @@ const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/connection');
 // create our Post model
 class Requirements extends Model {
-  static upvote(body, user_id, models) {
+  static upvote(body, models) {
     return models.ContributorLog.create({
-      user_id: user_id,
+      user_id: body.user_id,
       requirement_id: body.requirement_id
     }).then(() => {
-      return Post.findOne({
+      return Requirements.findOne({
         where: {
-          id: body.requirement_id
+          requirement_id: body.requirement_id
         },
         attributes: [
-          'id',
+          'requirement_id',
           'requirement_url',
           'title',
           'created_at',
-          [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributors_count']
+          [sequelize.literal('(SELECT COUNT(contribution_id) FROM ContributorLog group WHERE requirement.requirement_id = ContributorLog.requirement_id)'), 'contributor_count']
         ],
         include: [
           {
