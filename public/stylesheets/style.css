@@ -215,7 +215,7 @@ main {
   text-align: right;
 }
 
-.upvote-btn {
+ .upvote-btn {
   background-color: #197d0f;
   transition: background-color .1s;
 }
@@ -292,4 +292,9 @@ section {
 
 article {
   color: white;
+  border-color: #3486eb;
+  border-style: solid;
+  text-align: center;
+  vertical-align: center;
+  border-radius: 15px;
 }
