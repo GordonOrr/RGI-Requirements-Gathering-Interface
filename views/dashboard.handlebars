@@ -4,12 +4,12 @@
 
     <form class="new-requirement-form">
       <div>
-        <label for="requirement-title">Title</label>
-        <input type="text" id="requirement-title" name="requirement-title" />
+        <label for="requirement-title">Requirement Title</label>
+        <input type="text" id="requirement-title" name="requirement-title" size="64" />
       </div>
       <div>
-        <label for="requirement-url">Link</label>
-        <input id="requirement-url" name="requirement-url" />
+        <label for="requirement-url">GitHub Branch Link</label>
+        <input id="requirement-url" name="requirement-url" size="64"/>
       </div>
       <button type="submit" class="btn">Create</button>
     </form>
@@ -22,11 +22,14 @@
       {{#each requirements as |requirement|}}
       <li>
         {{> requirement-info requirement}}
+        </li>
         <a href="/dashboard/edit/{{requirement.requirement_id}}" class="edit-link">Edit Requirement</a>
       </li>
       {{/each}}
     </ol>
   </section>
+  </div>
+  </br></br>
   {{/if}}
 </div>
 

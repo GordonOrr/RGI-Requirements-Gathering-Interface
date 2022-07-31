@@ -5,17 +5,17 @@ const userdata = [
   {
     username: 'UX_Design_A',
     email: 'andrew@test.com',
-    password: 'passwordAndrew123'
+    password: 'password123'
   },
   {
     username: 'Business_Analyst_G',
     email: 'gordon@test.com',
-    password: 'passwordGordon123'
+    password: 'password123'
   },
   {
     username: 'Solution_Architecture_C',
     email: 'carter@test.com',
-    password: 'passwordCarter123'
+    password: 'password123'
   }
 ];
 

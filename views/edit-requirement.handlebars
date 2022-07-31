@@ -9,7 +9,7 @@
         <input class="edit-req-title" name="requirement-title" type="text" value="{{requirement.title}}" />
       </div>
       <div class="point-line">
-        {{requirement.contributor_count}} {{format_plural "point" requirement.contributor_count}} by you on {{format_date requirement.created_at}}
+        Created by you on {{format_date requirement.created_at}}
         |
         <a href="/post/{{requirement.requirement_id}}">{{requirement.comments.length}} {{format_plural "comment" requirement.comments.length}}</a>
       </div>
@@ -24,7 +24,7 @@
     </h2>
     <form>
       <div>
-        <textarea class="new-comment" name="comment-body"></textarea>
+        <textarea class="new-comment" name="comment-body" rows="4"></textarea>
       </div>
 
       <div>

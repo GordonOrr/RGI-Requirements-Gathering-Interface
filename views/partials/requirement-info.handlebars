@@ -1,10 +1,11 @@
 <article class="requirement">
   <div class="title">
-    {{title}}
+    <a href="/requirement/{{requirement_id}}">{{title}}</a>
   </div>
   <div class="meta">
-    {{contributor_count}} {{format_plural "point" contributor_count}} by {{user.username}} on {{format_date created_at}}
+    {{user.username}} created on {{format_date created_at}}
     |
     <a href="/requirement/{{requirement_id}}">{{comments.length}} {{format_plural "comment" comments.length}}</a>
   </div>
+  <br/>
 </article>
