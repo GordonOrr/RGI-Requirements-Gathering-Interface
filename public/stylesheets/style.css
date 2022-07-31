@@ -10,17 +10,18 @@ body, html {
   color: #333;
 }
 
-/*html { 
+html { 
   background: url('../images/background-photo.avif') no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: 100% 100%;
-}*/
+}
 
 a {
   text-decoration: none;
-  color: #225ca3;
+  color: white;
+  /* color: #225ca3; */
   font-weight: bold;
   transition: color .1s;
 }
@@ -47,6 +48,7 @@ button:hover {
 .post-list {
   margin: 0;
   padding: 0;
+  color: white;
 }
 
 textarea, input {
@@ -61,8 +63,12 @@ textarea:focus, input:focus {
 }
 
 textarea {
-  min-width: 40%;
-  min-height: 100px;
+  min-width: 100%;
+  min-height: 45px;
+}
+
+.new-comment {
+  margin-bottom: 6%;
 }
 
 form > div {
@@ -82,15 +88,73 @@ form label {
   flex-direction: column;
 }
 
+.comment-wrapper {
+  width: 100%;
+  min-height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.comment-wrapper button {
+  padding: 7px;
+}
+
+.point-line {
+  margin-bottom: 5%;
+}
+
+.req-wrapper {
+  width: 100%;
+  min-height: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.req-wrapper input {
+  padding: 10px 40px 10px 10px;
+}
+
+.req-title {
+  text-align: center;
+}
+
+.req-list {
+  padding-right: 75px;
+  padding-left: 75px;
+}
+
+.btn {
+  padding: 5px 10px 5px 10px;
+}
+
 header {
   border-bottom: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 1%;
+  padding: 2% 1%;
 }
 
 header h1 {
+  font-size: 1.5em;
+  color: white;
+}
+
+.top-logo {
+  margin-bottom: 1%;
+}
+
+.bottom-logo {
+  margin-top: 1px;
+}
+
+nav {
   font-size: 1em;
 }
 
@@ -105,7 +169,8 @@ main {
   padding: 0;
   cursor: pointer;
   text-decoration: none;
-  color: #225ca3;
+  color: white;
+  /* color: #225ca3; */
   font-size: 100%;
   font-weight: bold;
   transition: color .1s;
@@ -133,7 +198,15 @@ main {
 .post .title span {
   font-style: italic;
   font-size: 90%;
-  color: #7d7d7d;
+  color: white;
+}
+
+.title {
+  font-weight: bold;
+}
+
+.meta {
+  color: white;
 }
 
 .edit-link {
@@ -150,8 +223,26 @@ main {
   background-color: #1f9c13;
 }
 
+.edit-req-title {
+  width: 100%;
+}
+
 .comment-form {
   margin-bottom: 5%;
+  margin-top: 1.5%;
+}
+
+.alt-comment-form {
+  margin-bottom: 2%;
+  margin-top: 1.5%;
+}
+
+.comment-list {
+  margin-top: 1.5%;
+}
+
+.comment-title {
+  text-align: center;
 }
 
 .comment {
@@ -159,14 +250,22 @@ main {
   margin-bottom: 1%;
 }
 
+.comments {
+  margin-top: 5%;
+}
+
 .comment:nth-child(odd) {
-  background-color: #fff5eb;
+  background-color: darkgrey;
 }
 
 .comment .meta {
   font-size: 90%;
   margin-bottom: .5%;
-  opacity: .6;
+  opacity: .8;
+}
+
+.add-comment-button {
+  width: 100%;
 }
 
 .new-post-form input {
@@ -182,5 +281,14 @@ footer {
   display: flex;
   justify-content: center;
   padding: 1%;
-  font-size: 110%;
+  font-size: 1.5em;
+  color: white;
+}
+
+section {
+  color: white;
+}
+
+article {
+  color: white;
 }
