@@ -1,4 +1,4 @@
-# RGI- Requirements-Gathering_Interface (Bootcamp Team-Project-2)
+# RGI - Requirements-Gathering-Interface (Bootcamp Team-Project-2)
 
 ## Team Members
 * Andrew Smith
@@ -22,6 +22,10 @@ You and your group will use everything you’ve learned over the past six weeks 
 * Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.).
 * Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
 
+## RGI - Project Concept
+* RGI enables the gathering of project requirements and improves project success with clear commitment to objectives from development team
+* Ensures early understanding of requirements and any team considerations that may impact project success
+* Utilize “City Market” as a fictional client use case to illustrate and test RGI throughout the development process
 
 ## Built With
 * HTML
