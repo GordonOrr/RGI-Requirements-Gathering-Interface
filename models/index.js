@@ -1,50 +1,51 @@
 // import all models
-const Post = require('./Post');
+const Requirements = require('./Requirements');
 const User = require('./User');
-const Vote = require('./Vote');
+const ContributorLog = require('./ContributorLog');
 const Comment = require('./Comment');
 
 // create associations
-User.hasMany(Post, {
+User.hasMany(Requirements, {
   foreignKey: 'user_id'
 });
 
-Post.belongsTo(User, {
+Requirements.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-User.belongsToMany(Post, {
-  through: Vote,
-  as: 'voted_posts',
+User.belongsToMany(Requirements, {
+  through: ContributorLog,
+  //NEED UP UPDATE VARIABLE NAMES
+  as: 'contributed_requirements',
 
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Post.belongsToMany(User, {
-  through: Vote,
-  as: 'voted_posts',
-  foreignKey: 'post_id',
+Requirements.belongsToMany(User, {
+  through: ContributorLog,
+  as: 'contributed_requirements',
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(User, {
+ContributorLog.belongsTo(User, {
   foreignKey: 'user_id',
   onDelete: 'SET NULL'
 });
 
-Vote.belongsTo(Post, {
-  foreignKey: 'post_id',
+ContributorLog.belongsTo(Requirements, {
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
-User.hasMany(Vote, {
+User.hasMany(ContributorLog, {
   foreignKey: 'user_id'
 });
 
-Post.hasMany(Vote, {
-  foreignKey: 'post_id'
+Requirements.hasMany(ContributorLog, {
+  foreignKey: 'requirement_id'
 });
 
 Comment.belongsTo(User, {
@@ -52,8 +53,8 @@ Comment.belongsTo(User, {
   onDelete: 'SET NULL'
 });
 
-Comment.belongsTo(Post, {
-  foreignKey: 'post_id',
+Comment.belongsTo(Requirements, {
+  foreignKey: 'requirement_id',
   onDelete: 'SET NULL'
 });
 
@@ -62,8 +63,8 @@ User.hasMany(Comment, {
   onDelete: 'SET NULL'
 });
 
-Post.hasMany(Comment, {
-  foreignKey: 'post_id'
+Requirements.hasMany(Comment, {
+  foreignKey: 'requirement_id'
 });
 
-module.exports = { User, Post, Vote, Comment };
+module.exports = { User, Requirements, ContributorLog, Comment };

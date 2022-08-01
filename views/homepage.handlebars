@@ -1,7 +1,8 @@
-<ol class="post-list">
-  {{#each posts as |post|}}
-  <li>
-    {{> post-info post }}
-  </li>
+<div class="post-list">
+  {{#each requirements as |requirement|}}
+  <div>
+    {{> requirement-info requirement }}
+  </div>
+  </br>
   {{/each}}
-</ol>
+</div>

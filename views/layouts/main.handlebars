@@ -4,22 +4,28 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Just Tech News</title>
+  <title>RGI</title>
   <link rel="stylesheet" href="/stylesheets/style.css">
+  <link rel="stylesheet" href="/public/stylesheets/foundation.css">
 </head>
 
 <body>
   <div class="wrapper">
     <header>
-      <h1>
-        <a href="/">Just Tech News</a>
-      </h1>
+      <div>
+          <h1 class="top-logo">
+            <a href="/">RGI:</a>
+          </h1>
+          <h1 class="bottom-logo">
+            Requirements Gathering Interface
+          </h1>
+      </div>
       <nav>
         {{#if loggedIn}}
-        <a href="/dashboard">dashboard</a>
-        <button id="logout" class="btn-no-style">logout</button>
+        <a href="/dashboard">Dashboard</a>
+        <button id="logout" class="btn-no-style">Logout</button>
         {{else}}
-        <a href="/login">login</a>
+        <a href="/login">Login</a>
         {{/if}}
       </nav>
     </header>
@@ -27,7 +33,7 @@
       {{{ body }}}
     </main>
     <footer>
-      Thanks for visiting!
+      Made by Andrew Smith, Gordon Orr, and Carter Sheppard!
     </footer>
   </div>
   

@@ -1,0 +1,47 @@
+<div class="comment-wrapper">
+  <article>
+    <a href="/dashboard"> &larr; Back to dashboard</a>
+    <h2>
+      Edit Requirement
+    </h2>
+    <form class="edit-requirement-form">
+      <div>
+        <input class="edit-req-title" name="requirement-title" type="text" value="{{requirement.title}}" />
+      </div>
+      <div class="point-line">
+        Created by you on {{format_date requirement.created_at}}
+        |
+        <a href="/post/{{requirement.requirement_id}}">{{requirement.comments.length}} {{format_plural "comment" requirement.comments.length}}</a>
+      </div>
+      <button type="submit">Save Requirement</button>
+      <button type="button" class="delete-requirement-btn">Delete Requirement</button>
+    </form>
+  </article>
+
+  <article class="comment-form">
+    <h2>
+      Add Comment
+    </h2>
+    <form>
+      <div>
+        <textarea class="new-comment" name="comment-body" rows="4"></textarea>
+      </div>
+
+      <div>
+        <button type="submit" class="add-comment-button">Add Comment</button>
+      </div>
+    </form>
+  </article>
+
+  <article class="comment-list">
+    <h2 class="comment-title">
+      Comments:
+    </h2>
+    {{> comments requirement.comments}}
+  </article>
+
+</div>
+
+<script src="/javascript/edit-requirement.js"></script>
+<script src="/javascript/delete-requirement.js"></script>
+<script src="/javascript/comment.js"></script>

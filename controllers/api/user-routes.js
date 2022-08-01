@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { User, Post, Comment, Vote } = require('../../models');
+const { User, Requirements, Comment, ContributorLog } = require('../../models');
 
 // get all users
 router.get('/', (req, res) => {
@@ -17,26 +17,26 @@ router.get('/:id', (req, res) => {
   User.findOne({
     attributes: { exclude: ['password'] },
     where: {
-      id: req.params.id
+      user_id: req.params.id
     },
     include: [
       {
-        model: Post,
-        attributes: ['id', 'title', 'post_url', 'created_at']
+        model: Requirements,
+        attributes: ['requirement_id', 'title', 'requirement_url', 'created_at']
       },
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'created_at'],
+        attributes: ['comment_id', 'comment_text', 'created_at'],
         include: {
-          model: Post,
+          model: Requirements,
           attributes: ['title']
         }
       },
       {
-        model: Post,
+        model: Requirements,
         attributes: ['title'],
-        through: Vote,
-        as: 'voted_posts'
+        through: ContributorLog,
+        as: 'contributed_requirements'
       }
     ]
   })
@@ -62,7 +62,7 @@ router.post('/', (req, res) => {
   })
     .then(dbUserData => {
       req.session.save(() => {
-        req.session.user_id = dbUserData.id;
+        req.session.user_id = dbUserData.user_id;
         req.session.username = dbUserData.username;
         req.session.loggedIn = true;
   
@@ -95,7 +95,7 @@ router.post('/login', (req, res) => {
     }
 
     req.session.save(() => {
-      req.session.user_id = dbUserData.id;
+      req.session.user_id = dbUserData.user_id;
       req.session.username = dbUserData.username;
       req.session.loggedIn = true;
   
@@ -122,7 +122,7 @@ router.put('/:id', (req, res) => {
   User.update(req.body, {
     individualHooks: true,
     where: {
-      id: req.params.id
+      user_id: req.params.id
     }
   })
     .then(dbUserData => {
@@ -141,7 +141,7 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
   User.destroy({
     where: {
-      id: req.params.id
+      user_id: req.params.id
     }
   })
     .then(dbUserData => {

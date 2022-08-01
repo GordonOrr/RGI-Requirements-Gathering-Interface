@@ -1,22 +1,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment, Vote } = require('../models');
+const { Requirements, User, Comment, ContributorLog } = require('../models');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
   console.log('======================');
-  Post.findAll({
+  Requirements.findAll({
     attributes: [
-      'id',
-      'post_url',
+      'requirement_id',
+      'requirement_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributor_count']
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['comment_id', 'comment_text', 'requirement_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -28,11 +28,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+    .then(dbReqData => {
+      const requirements = dbReqData.map(req => req.get({ plain: true }));
 
       res.render('homepage', {
-        posts,
+        requirements,
         loggedIn: req.session.loggedIn
       });
     })
@@ -43,22 +43,22 @@ router.get('/', (req, res) => {
 });
 
 // get single post
-router.get('/post/:id', (req, res) => {
-  Post.findOne({
+router.get('/requirement/:id', (req, res) => {
+  Requirements.findOne({
     where: {
-      id: req.params.id
+      requirement_id: req.params.id
     },
     attributes: [
-      'id',
-      'post_url',
+      'requirement_id',
+      'requirement_url',
       'title',
       'created_at',
-      [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'), 'vote_count']
+      [sequelize.literal('(SELECT COUNT(*) FROM ContributorLog WHERE requirement.requirement_id = ContributorLog.contribution_id)'), 'contributor_count']
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['comment_id', 'comment_text', 'requirement_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -70,16 +70,16 @@ router.get('/post/:id', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbReqData => {
+      if (!dbReqData) {
+        res.status(404).json({ message: 'No requirement found with this id' });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
+      const requirement = dbReqData.get({ plain: true });
 
       res.render('single-post', {
-        post,
+        requirement,
         loggedIn: req.session.loggedIn
       });
     })
