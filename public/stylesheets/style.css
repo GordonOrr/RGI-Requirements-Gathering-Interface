@@ -298,3 +298,11 @@ article {
   vertical-align: center;
   border-radius: 15px;
 }
+
+@media screen and (max-width: 980px) {
+
+  .req-wrapper {
+    flex-direction: column;
+  }  
+
+}
