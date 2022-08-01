@@ -41,10 +41,7 @@ https://nameless-bastion-45146.herokuapp.com/
 https://github.com/GordonOrr/RGI-Requirements-Gathering-Interface
 
 ## Screen Shots of Application
-![Screen Shot One](images/screen-shot-one.png?raw=true "Screen Shot One")
-![Screen Shot Two](images/screen-shot-two.png?raw=true "Screen Shot Two")
-![Screen Shot Three](images/screen-shot-three.png?raw=true "Screen Shot Three")
-
-
+![Screen Shot One](images/screenshot-one.png?raw=true "Screen Shot One")
+![Screen Shot Two](images/screenshot-two.png?raw=true "Screen Shot Two")
 
 
